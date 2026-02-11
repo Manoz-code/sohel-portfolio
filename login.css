@@ -1,0 +1,27 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+#btn{
+    padding:2px;
+    border : none;
+
+}
+
+#login-form{
+    width : 50%;
+    height : 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin : 200px auto
+}
+
+#submit{
+    padding:4px;
+    border : none;
+    border-radius : 5px;
+}
