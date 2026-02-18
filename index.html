@@ -17,7 +17,10 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="#">Fine Dining Professional</a>
+            <a class="navbar-brand editable" data-id="nav-title" href="#">Fine Dining Professional</a>
+
+            <button id="editMode" style="display : none; width :20%;border-radius:4px;">Edit</button> 
+            <button id="save" style="display : none; width :20%;border-radius:4px;">Save</button> 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -38,7 +41,8 @@
                                     </li>   
                                   
                                        <li class="nav-item">
-                        <a class="nav-link" >Login</a>
+                        <a class="nav-link" href="login.html" id="login-btn" rel="noopener">Login</a>
+                        <a class="nav-link" style="display : none;" id="logout-btn">Logout</a>
                     </li>
                   
             
@@ -57,9 +61,9 @@
      <div class="card profile-card">
   <img src="sohel-removebg-preview.png" class="card-img-top profile-img" alt="Professional Waiter">
      <div class="card-body text-center">
-    <h3 class="card-title">Mohammed Sohel</h3>
-    <h5 class="text-primary">Fine Dining Waiter </h5>
-    <p class="card-text">Venor restaurant professional with 5+ years of experience in luxury hospitality, and exceptional guest service.</p>
+    <h3 class="card-title editable" data-id="admin-name">Mohammed Sohel</h3>
+    <h5 class="text-primary editable" data-id="profession-title">Fine Dining Waiter </h5>
+    <p class="card-text editable" data-id="profession-description"> Venor restaurant professional with 5+ years of experience in luxury hospitality, and exceptional guest service.</p>
      <div class="contact-icons mt-4">
     <a href="https://www.facebook.com/share/1QY9LzR7vU/" class="social-icon" target="_blank" rel="noopener"><i class="bi bi-facebook"></i></a>
    <a href="mailto:sohelvenor@gmail.com" class="social-icon" target="_blank" rel="noopener"><i class="bi bi-envelope"></i></a>
@@ -74,20 +78,21 @@
 
         <!-- Experience Section -->
         <section id="experience" class="py-5">
-            <h2 class="text-center mb-5 section-title">Fine Dining Experience</h2>
+            <h2 class="text-center mb-5 section-title editable" data-id="fine-title">Fine Dining Experience</h2>
             <div class="row">
                 <div class="col-md-6 mb-4">
                     <div class="card experience-card h-100">
                         <div class="card-body">
-                            <h5 class="card-title">Head Waiter</h5>
-                            <h6 class="card-subtitle mb-2 text-primary">Venor - Saudi Arabia ⭐⭐⭐⭐⭐</h6>
-                            <p class="text-muted">2021 - 2022</p>
+                            <h5 class="card-title editable" data-id="fine-position-title">Head Waiter</h5>
+                            <h6 class="card-subtitle mb-2 text-primary editable" data-id="fine-place-contry-title">Venor - Saudi Arabia ⭐⭐⭐⭐⭐</h6>
+                            <p class="text-muted editable" data-id="fine-date-title">2021 - 2022</p>
                             <ul>
-                                <li>Led a team of 12 wait staff in a 5-star restaurant</li>
-                                <li>Managed VIP guests and special dietary requirements</li>
-                                <li>Trained new staff on service protocols and wine knowledge</li>
-                                <li>Coordinated with kitchen for seamless 15-course tasting menus</li>
-                                <li>Achieved 98% guest satisfaction rating</li>
+                                <li class="editable" data-id="fine-title-li">Led a team of 12 wait staff in a 5-star restaurant</li>
+                                <li class="editable" data-id="fine-title-li2">Managed VIP guests and special dietary requirements</li>
+                                <li class="editable" data-id="fine-title-li3">Trained new staff on service protocols and wine knowledge</li>
+                                <li class="editable" data-id="fine-title-li4">Coordinated with kitchen for seamless 15-course tasting menus</li>
+                                <li class="editable" data-id="fine-title-li5">Achieved 98% guest satisfaction rating</li>
+                               
                             </ul>
                         </div>
                     </div>
@@ -96,15 +101,15 @@
                 <div class="col-md-6 mb-4">
                     <div class="card experience-card h-100">
                         <div class="card-body">
-                            <h5 class="card-title">Senior Waiter-Captain</h5>
-                            <h6 class="card-subtitle mb-2 text-primary">Venor - Saudi Arabia ⭐⭐⭐⭐⭐</h6>
-                            <p class="text-muted">2022 - Present</p>
+                            <h5 class="card-title editable" data-id="senior-title">Senior Waiter-Captain</h5>
+                            <h6 class="card-subtitle mb-2 text-primary editable" data-id="senior-place">Venor - Saudi Arabia ⭐⭐⭐⭐⭐</h6>
+                            <p class="text-muted editable" data-id="senior-date">2022 - Present</p>
                             <ul>
-                                <li>Provided premium service in high-pressure environment</li>
-                                <li>Mastered tableside service techniques</li>
-                                <li>Managed reservations for 120+ cover restaurant</li>
-                                <li>Handled special events and celebrity guests</li>
-                                <li>Maintained consistent 5-star reviews on TripAdvisor</li>
+                                <li class="editable" data-id="senior-li1">Provided premium service in high-pressure environment</li>
+                                <li class="editable" data-id="senior-li2">Mastered tableside service techniques</li>
+                                <li class="editable" data-id="senior-li3">Managed reservations for 120+ cover restaurant</li>
+                                <li class="editable" data-id="senior-li4">Handled special events and celebrity guests</li>
+                                <li class="editable" data-id="senior-li5">Maintained consistent 5-star reviews on TripAdvisor</li>
                             </ul>
                         </div>
                     </div>
@@ -115,33 +120,33 @@
 
         <!-- Skills Section -->
         <section id="skills" class="py-5">
-            <h2 class="text-center mb-5 section-title">Professional Skills</h2>
+            <h2 class="text-center mb-5 section-titlen editable" data-id="pro-skill">Professional Skills</h2>
             <div class="row">
                 <div class="col-md-6 mb-4">
                     <div class="card skill-category">
                         <div class="card-body">
-  <h5 class="card-title">Service Excellence</h5>
+  <h5 class="card-title editable" data-id="pro-skill-excellence">Service Excellence</h5>
       <div class="skill-item">
-                                <span>Silver Service</span>
+                                <span class="editable" data-id="pro-skill-silver"> Silver Service</span>
                                 <div class="progress">
                                     <div class="progress-bar" style="width: 98%"></div>
                                 </div>
                             </div>
                             <div class="skill-item">
-                                <span>Tableside Preparation</span>
+                                <span class="editable" data-id="pro-skill-tableside">Tableside Preparation</span>
                                 <div class="progress">
                                     <div class="progress-bar" style="width: 95%"></div>
                                 </div>
                             </div>
                             
                             <div class="skill-item">
-                                <span>Guest Relations</span>
+                                <span class="editable" data-id="pro-skill-guest">Guest Relations</span>
                                 <div class="progress">
                                     <div class="progress-bar" style="width: 97%"></div>
                                 </div>
                             </div>
                             <div class="skill-item">
-                                <span>Menu Knowledge</span>
+                                <span class="editable" data-id="pro-skill-menu">Menu Knowledge</span>
                                 <div class="progress">
                                     <div class="progress-bar" style="width: 96%"></div>
                                 </div>
@@ -153,28 +158,28 @@
                 <div class="col-md-6 mb-4">
                     <div class="card skill-category">
                         <div class="card-body">
-                            <h5 class="card-title">Additional Skills</h5>
+                            <h5 class="card-title editable" data-id="add-skill">Additional Skills</h5>
                            
                             <div class="skill-item">
-                                <span>Team Leadership</span>
+                                <span class="editable" data-id="add-skill-leadership">Team Leadership</span>
                                 <div class="progress">
                                     <div class="progress-bar" style="width: 90%"></div>
                                 </div>
                             </div>
                             <div class="skill-item">
-                                <span>Reservation Systems</span>
+                                <span class="editable" data-id="add-skill-resevation">Reservation Systems</span>
                                 <div class="progress">
                                     <div class="progress-bar" style="width: 88%"></div>
                                 </div>
                             </div>
                             <div class="skill-item">
-                                <span>Event Management</span>
+                                <span class="editable" data-id="add-skill-event-management">Event Management</span>
                                 <div class="progress">
                                     <div class="progress-bar" style="width: 85%"></div>
                                 </div>
                             </div>
                             <div class="skill-item">
-                                <span>POS Systems</span>
+                                <span class="editable" data-id="add-skill-pos">POS Systems</span>
                                 <div class="progress">
                                     <div class="progress-bar" style="width: 95%"></div>
                                 </div>
@@ -185,28 +190,28 @@
                 <div class="col-md-6 mb-4">
                     <div class="card skill-category">
                         <div class="card-body">
-                            <h5 class="card-title">Specializations</h5>
+                            <h5 class="card-title editable" data-id="add-skill-specialization">Specializations</h5>
                             <div class="skill-item">
-                                <span>French Cuisine Service</span>
+                                <span class="editable" data-id="add-skill-cuisine">French Cuisine Service</span>
                                 <div class="progress">
                                     <div class="progress-bar" style="width: 100%"></div>
                                 </div>
                             </div>
                             
                             <div class="skill-item">
-                                <span>Molecular Gastronomy</span>
+                                <span class="editable" data-id="add-skill-molecular"> Molecular Gastronomy</span>
                                 <div class="progress">
                                     <div class="progress-bar" style="width: 85%"></div>
                                 </div>
                             </div>
                             <div class="skill-item">
-                                <span>Dietary Restrictions</span>
+                                <span class="editable" data-id="add-skill-dietary">Dietary Restrictions</span>
                                 <div class="progress">
                                     <div class="progress-bar" style="width: 90%"></div>
                                 </div>
                             </div>
                             <div class="sLeadershipkill-item">
-                                <span>VIP Service</span>
+                                <span class="editable" data-id="add-skill-vip">VIP Service</span>
                                 <div class="progress">
                                     <div class="progress-bar" style="width: 98%"></div>
                                 </div>
@@ -219,7 +224,7 @@
 
          <!-- Certifications Section -->
         <section id="certifications" class="py-5">
-            <h2 class="text-center mb-5 section-title">DEMONSTRATION </h2>
+            <h2 class="text-center mb-5 section-title editable" data-id="demo-skill">DEMONSTRATION </h2>
          <div class="row">
       <div class="col-md-4 mb-4">
       <div class="card img cert-card text-center h-100">
@@ -255,42 +260,42 @@
         
         
      <!-- Extra skills -->
-       <h1 class="text-center extra-skills mb-5 ">Extra Skills</h1>
+       <h1 class="text-center extra-skills mb-5 eidtable" data-id="extra-skill">Extra Skills</h1>
 
 <!--  Electrician Skills Section -->
 <section id="extra-skills" class="py-5">
-    <h2 class="text-center mb-5 section-title">Electrician Skills</h2>
+    <h2 class="text-center mb-5 section-title editable" data-id="extra-skill-electrician">Electrician Skills</h2>
     <div class="row">
         <div class="col-md-6 mb-4">
             <div class="card skill-category">
                 <div class="card-body">
-                    <h5 class="card-title">Installation Skills</h5>
+                    <h5 class="card-title editable" data-id="extra-skillinstallation">Installation Skills</h5>
                     <div class="skill-item">
-                        <span>Residential Wiring</span>
+                        <span class="editable" data-id="extra-skill-residential"> Residential Wiring</span>
                         <div class="progress">
                             <div class="progress-bar" style="width: 95%"></div>
                         </div>
                     </div>
                     <div class="skill-item">
-                        <span>Circuit Breaker Installation</span>
+                        <span class="editable" data-id="extra-skill-circuit">Circuit Breaker Installation</span>
                         <div class="progress">
                             <div class="progress-bar" style="width: 90%"></div>
                         </div>
                     </div>
                     <div class="skill-item">
-                        <span>Lighting Installation</span>
+                        <span class="editable" data-id="extra-skill-lighting">Lighting Installation</span>
                         <div class="progress">
                             <div class="progress-bar" style="width: 92%"></div>
                         </div>
                     </div>
                     <div class="skill-item">
-                        <span>Distribution Board Wiring</span>
+                        <span class="editable" data-id="extra-skill-distribution">Distribution Board Wiring</span>
                         <div class="progress">
                             <div class="progress-bar" style="width: 88%"></div>
                         </div>
                     </div>
                     <div class="skill-item">
-                        <span>Conduit and Trunking</span>
+                        <span class="editable" data-id="extra-skill"data-id="extra-skill-conduit">Conduit and Trunking</span>
                         <div class="progress">
                             <div class="progress-bar" style="width: 85%"></div>
                         </div>
@@ -301,33 +306,33 @@
         <div class="col-md-6 mb-4">
             <div class="card skill-category">
                 <div class="card-body">
-                    <h5 class="card-title">Maintenance & Repair</h5>
+                    <h5 class="card-title editable" data-id="extra-skill-maintenance">Maintenance & Repair</h5>
                     <div class="skill-item">
-                        <span>Electrical Troubleshooting</span>
+                        <span class="editable" data-id="extra-skillelectrical-trouble">Electrical Troubleshooting</span>
                         <div class="progress">
                             <div class="progress-bar" style="width: 90%"></div>
                         </div>
                     </div>
                     <div class="skill-item">
-                        <span>Fault Finding</span>
+                        <span class="editable" data-id="extra-skill-fault-finding">Fault Finding</span>
                         <div class="progress">
                             <div class="progress-bar" style="width: 88%"></div>
                         </div>
                     </div>
                     <div class="skill-item">
-                        <span>Wiring Repair</span>
+                        <span class="editable" data-id="extra-skill-wiring">Wiring Repair</span>
                         <div class="progress">
                             <div class="progress-bar" style="width: 85%"></div>
                         </div>
                     </div>
                     <div class="skill-item">
-                        <span>Socket & Switch Repair</span>
+                        <span class="editable" data-id="extra-skill-socket-switch">Socket & Switch Repair</span>
                         <div class="progress">
                             <div class="progress-bar" style="width: 92%"></div>
                         </div>
                     </div>
                     <div class="skill-item">
-                        <span>Ceiling Fan Installation</span>
+                        <span class="editable" data-id="extra-skill-celling-fan">Ceiling Fan Installation</span>
                         <div class="progress">
                             <div class="progress-bar" style="width: 90%"></div>
                         </div>
@@ -338,33 +343,33 @@
         <div class="col-md-6 mb-4">
             <div class="card skill-category">
                 <div class="card-body">
-                    <h5 class="card-title">Testing & Safety</h5>
+                    <h5 class="card-title editable" data-id="extra-skill-testing-safety">Testing & Safety</h5>
                     <div class="skill-item">
-                        <span>Circuit Testing</span>
+                        <span class="editable" data-id="extra-skill-circuit-testing">Circuit Testing</span>
                         <div class="progress">
                             <div class="progress-bar" style="width: 85%"></div>
                         </div>
                     </div>
                     <div class="skill-item">
-                        <span>Multimeter Usage</span>
+                        <span class="editable" data-id="extra-skill-multimeter">Multimeter Usage</span>
                         <div class="progress">
                             <div class="progress-bar" style="width: 90%"></div>
                         </div>
                     </div>
                     <div class="skill-item">
-                        <span>Insulation Testing</span>
+                        <span class="editable" data-id="extra-skill-insulation">Insulation Testing</span>
                         <div class="progress">
                             <div class="progress-bar" style="width: 80%"></div>
                         </div>
                     </div>
                     <div class="skill-item">
-                        <span>Electrical Safety Procedures</span>
+                        <span class="editable" data-id="extra-skill-electrical-safety">Electrical Safety Procedures</span>
                         <div class="progress">
                             <div class="progress-bar" style="width: 95%"></div>
                         </div>
                     </div>
                     <div class="skill-item">
-                        <span>Earth Ground Testing</span>
+                        <span class="editable" data-id="extra-skill-earth-ground">Earth Ground Testing</span>
                         <div class="progress">
                             <div class="progress-bar" style="width: 85%"></div>
                         </div>
@@ -375,33 +380,33 @@
         <div class="col-md-6 mb-4">
             <div class="card skill-category">
                 <div class="card-body">
-                    <h5 class="card-title">Specialized Skills</h5>
+                    <h5 class="card-title editable" data-id="extra-skill" data-id="specialized-skill">Specialized Skills</h5>
                     <div class="skill-item">
-                        <span>Smart Home Wiring</span>
+                        <span class="editable" data-id="specialized-skill-smart-home-wiring">Smart Home Wiring</span>
                         <div class="progress">
                             <div class="progress-bar" style="width: 75%"></div>
                         </div>
                     </div>
                     <div class="skill-item">
-                        <span>Generator Installation</span>
+                        <span class="editable" data-id="specialized-skill-generator-installation">Generator Installation</span>
                         <div class="progress">
                             <div class="progress-bar" style="width: 80%"></div>
                         </div>
                     </div>
                     <div class="skill-item">
-                        <span>UPS System Installation</span>
+                        <span class="editable" data-id="specialized-skill-ups-system">UPS System Installation</span>
                         <div class="progress">
                             <div class="progress-bar" style="width: 70%"></div>
                         </div>
                     </div>
                     <div class="skill-item">
-                        <span>AC Electrical Work</span>
+                        <span class="editable" data-id="specialized-skill-ac">AC Electrical Work</span>
                         <div class="progress">
                             <div class="progress-bar" style="width: 85%"></div>
                         </div>
                     </div>
                     <div class="skill-item">
-                        <span>Solar Panel Basic Wiring</span>
+                        <span class="editable" data-id="specialized-skill-solar">Solar Panel Basic Wiring</span>
                         <div class="progress">
                             <div class="progress-bar" style="width: 65%"></div>
                         </div>
@@ -415,38 +420,38 @@
 
 <!-- Skills Section -->
 <section id="skills" class="py-5">
-    <h2 class="text-center mb-5 section-title">Plumbing Skills</h2>
+    <h2 class="text-center mb-5 section-title editable" data-id="plumbing-skill">Plumbing Skills</h2>
     <div class="row">
         <div class="col-md-6 mb-4">
             <div class="card skill-category">
                 <div class="card-body">
-                    <h5 class="card-title">Installation Skills</h5>
+                    <h5 class="card-title eidtable" data-id="plumbing-skill-installatiopn">Installation Skills</h5>
                     <div class="skill-item">
-                        <span>Pipe Fitting & Installation</span>
+                        <span class="editable" data-id="plumbing-skill-pipe">Pipe Fitting & Installation</span>
                         <div class="progress">
                             <div class="progress-bar" style="width: 95%"></div>
                         </div>
                     </div>
                     <div class="skill-item">
-                        <span>Water Heater Installation</span>
+                        <span class="editable" data-id="plumbing-skill-water-heater">Water Heater Installation</span>
                         <div class="progress">
                             <div class="progress-bar" style="width: 90%"></div>
                         </div>
                     </div>
                     <div class="skill-item">
-                        <span>Toilet & Sanitary Ware Installation</span>
+                        <span class="editable" data-id="plumbing-skill-toilet">Toilet & Sanitary Ware Installation</span>
                         <div class="progress">
                             <div class="progress-bar" style="width: 92%"></div>
                         </div>
                     </div>
                     <div class="skill-item">
-                        <span>Kitchen Sink Installation</span>
+                        <span class="editable" data-id="plumbing-skill-kitchen">Kitchen Sink Installation</span>
                         <div class="progress">
                             <div class="progress-bar" style="width: 88%"></div>
                         </div>
                     </div>
                     <div class="skill-item">
-                        <span>Shower & Bathtub Installation</span>
+                        <span class="editable" data-id="plumbing-skill-shower">Shower & Bathtub Installation</span>
                         <div class="progress">
                             <div class="progress-bar" style="width: 85%"></div>
                         </div>
@@ -457,33 +462,33 @@
         <div class="col-md-6 mb-4">
             <div class="card skill-category">
                 <div class="card-body">
-                    <h5 class="card-title">Repair & Maintenance</h5>
+                    <h5 class="card-title editable" data-id="plumbing-skill-repair-maintenance">Repair & Maintenance</h5>
                     <div class="skill-item">
-                        <span>Leak Detection & Repair</span>
+                        <span class="editable" data-id="plumbing-skill-leak-detection">Leak Detection & Repair</span>
                         <div class="progress">
                             <div class="progress-bar" style="width: 90%"></div>
                         </div>
                     </div>
                     <div class="skill-item">
-                        <span>Pipe Unclogging</span>
+                        <span class="editable" data-id="plumbing-skill-pipe">Pipe Unclogging</span>
                         <div class="progress">
                             <div class="progress-bar" style="width: 88%"></div>
                         </div>
                     </div>
                     <div class="skill-item">
-                        <span>Faucet & Tap Repair</span>
+                        <span class="editable" data-id="plumbing-skill-faucet">Faucet & Tap Repair</span>
                         <div class="progress">
                             <div class="progress-bar" style="width: 85%"></div>
                         </div>
                     </div>
                     <div class="skill-item">
-                        <span>Toilet Repair & Unclogging</span>
+                        <span class="editable" data-id="plumbing-skill-toilet-repair">Toilet Repair & Unclogging</span>
                         <div class="progress">
                             <div class="progress-bar" style="width: 92%"></div>
                         </div>
                     </div>
                     <div class="skill-item">
-                        <span>Water Pressure Adjustment</span>
+                        <span class="editable" data-id="plumbing-skill-water-pressure">Water Pressure Adjustment</span>
                         <div class="progress">
                             <div class="progress-bar" style="width: 90%"></div>
                         </div>
@@ -494,33 +499,33 @@
         <div class="col-md-6 mb-4">
             <div class="card skill-category">
                 <div class="card-body">
-                    <h5 class="card-title">Pipe Systems</h5>
+                    <h5 class="card-title editable" data-id="plumbing-skill-category">Pipe Systems</h5>
                     <div class="skill-item">
-                        <span>PVC Pipe Work</span>
+                        <span class="editable" data-id="plumbing-skill-category-pvc">PVC Pipe Work</span>
                         <div class="progress">
                             <div class="progress-bar" style="width: 85%"></div>
                         </div>
                     </div>
                     <div class="skill-item">
-                        <span>Copper Pipe Work</span>
+                        <span class="editable" data-id="plumbing-skill-category-copper">Copper Pipe Work</span>
                         <div class="progress">
                             <div class="progress-bar" style="width: 90%"></div>
                         </div>
                     </div>
                     <div class="skill-item">
-                        <span>PEX Pipe Installation</span>
+                        <span class="editable" data-id="plumbing-skill-category-pex">PEX Pipe Installation</span>
                         <div class="progress">
                             <div class="progress-bar" style="width: 80%"></div>
                         </div>
                     </div>
                     <div class="skill-item">
-                        <span>Galvanized Pipe Work</span>
+                        <span class="editable" data-id="plumbing-skill-category-galvanized">Galvanized Pipe Work</span>
                         <div class="progress">
                             <div class="progress-bar" style="width: 75%"></div>
                         </div>
                     </div>
                     <div class="skill-item">
-                        <span>CPVC Pipe Installation</span>
+                        <span class="editable" data-id="plumbing-skill-category-cpvc">CPVC Pipe Installation</span>
                         <div class="progress">
                             <div class="progress-bar" style="width: 85%"></div>
                         </div>
@@ -531,33 +536,33 @@
         <div class="col-md-6 mb-4">
             <div class="card skill-category">
                 <div class="card-body">
-                    <h5 class="card-title">Specialized Plumbing</h5>
+                    <h5 class="card-title editable" data-id="plumbing-skill-specialized">Specialized Plumbing</h5>
                     <div class="skill-item">
-                        <span>Water Pump Installation</span>
+                        <span class="editable" data-id="plumbing-skill-specialized-water-pump">Water Pump Installation</span>
                         <div class="progress">
                             <div class="progress-bar" style="width: 75%"></div>
                         </div>
                     </div>
                     <div class="skill-item">
-                        <span>Water Tank Installation</span>
+                        <span class="editable" data-id="plumbing-skill-specialized-tank-installation">Water Tank Installation</span>
                         <div class="progress">
                             <div class="progress-bar" style="width: 80%"></div>
                         </div>
                     </div>
                     <div class="skill-item">
-                        <span>Underground Pipe Laying</span>
+                        <span class="editable" data-id="plumbing-skill-specialized-underground">Underground Pipe Laying</span>
                         <div class="progress">
                             <div class="progress-bar" style="width: 70%"></div>
                         </div>
                     </div>
                     <div class="skill-item">
-                        <span>Greywater System Installation</span>
+                        <span class="editable" data-id="plumbing-skill-specialized-greywater-system">Greywater System Installation</span>
                         <div class="progress">
                             <div class="progress-bar" style="width: 65%"></div>
                         </div>
                     </div>
                     <div class="skill-item">
-                        <span>Boiler Installation & Maintenance</span>
+                        <span class="editable" data-id="plumbing-skill-specialized-boiler">Boiler Installation & Maintenance</span>
                         <div class="progress">
                             <div class="progress-bar" style="width: 85%"></div>
                         </div>
@@ -568,33 +573,33 @@
         <div class="col-md-6 mb-4">
             <div class="card skill-category">
                 <div class="card-body">
-                    <h5 class="card-title">Tools & Equipment</h5>
+                    <h5 class="card-title editable" data-id="tool-equipment">Tools & Equipment</h5>
                     <div class="skill-item">
-                        <span>Pipe Wrench Operation</span>
+                        <span class="editable" data-id="tool-equipment-pipe-wrench">Pipe Wrench Operation</span>
                         <div class="progress">
                             <div class="progress-bar" style="width: 95%"></div>
                         </div>
                     </div>
                     <div class="skill-item">
-                        <span>Pipe Threading Machine</span>
+                        <span class="editable" data-id="tool-equipment-pipe-threading">Pipe Threading Machine</span>
                         <div class="progress">
                             <div class="progress-bar" style="width: 85%"></div>
                         </div>
                     </div>
                     <div class="skill-item">
-                        <span>Drain Snake Operation</span>
+                        <span class="editable" data-id="tool-equipment-drain-snake">Drain Snake Operation</span>
                         <div class="progress">
                             <div class="progress-bar" style="width: 90%"></div>
                         </div>
                     </div>
                     <div class="skill-item">
-                        <span>Pipe Cutter & Reamer</span>
+                        <span class="editable" data-id="tool-equipment-pipe-cutter">Pipe Cutter & Reamer</span>
                         <div class="progress">
                             <div class="progress-bar" style="width: 88%"></div>
                         </div>
                     </div>
                     <div class="skill-item">
-                        <span>Pressure Testing Equipment</span>
+                        <span class="editable" data-id="tool-equipment-pressure-testing">Pressure Testing Equipment</span>
                         <div class="progress">
                             <div class="progress-bar" style="width: 85%"></div>
                         </div>
@@ -605,33 +610,33 @@
         <div class="col-md-6 mb-4">
             <div class="card skill-category">
                 <div class="card-body">
-                    <h5 class="card-title">Safety & Inspection</h5>
+                    <h5 class="card-title editable" data-id="safety-inspection">Safety & Inspection</h5>
                     <div class="skill-item">
-                        <span>Water Leak Detection</span>
+                        <span class="editable" data-id="safety-inspection-water-leak">Water Leak Detection</span>
                         <div class="progress">
                             <div class="progress-bar" style="width: 90%"></div>
                         </div>
                     </div>
                     <div class="skill-item">
-                        <span>Plumbing System Inspection</span>
+                        <span class="editable" data-id="safety-inspection-plumbing-system">Plumbing System Inspection</span>
                         <div class="progress">
                             <div class="progress-bar" style="width: 88%"></div>
                         </div>
                     </div>
                     <div class="skill-item">
-                        <span>Safety Protocols</span>
+                        <span class="editable" data-id="safety-inspection-safety-protocals">Safety Protocols</span>
                         <div class="progress">
                             <div class="progress-bar" style="width: 95%"></div>
                         </div>
                     </div>
                     <div class="skill-item">
-                        <span>Building Code Compliance</span>
+                        <span class="editable" data-id="safety-inspection-building-code-compliance"> Building Code Compliance</span>
                         <div class="progress">
                             <div class="progress-bar" style="width: 85%"></div>
                         </div>
                     </div>
                     <div class="skill-item">
-                        <span>Sanitary Standards</span>
+                        <span class="editable" data-id="safety-inspection-sanitary-stander">Sanitary Standards</span>
                         <div class="progress">
                             <div class="progress-bar" style="width: 90%"></div>
                         </div>
@@ -726,8 +731,8 @@
         <!-- Thank You & Back to Top Section -->
      <section id="thank-you" class="py-5 text-center">
     <div class="thank-you-card">
-                <h2 class="mb-4">Thank You for Visiting</h2>
-                <p class="lead mb-4">I appreciate you taking the time to review my portfolio. For inquiries about fine dining service opportunities or consulting, please don't hesitate to reach out.</p>
+                <h2 class="mb-4 editable" data-id="gratitude">Thank You for Visiting</h2>
+                <p class="lead mb-4 editable" data-id="gratitude-description">I appreciate you taking the time to review my portfolio. For inquiries about fine dining service opportunities or consulting, please don't hesitate to reach out.</p>
          
   <div class="d-flex justify-content-center gap-3 mb-4">
                    
@@ -746,13 +751,15 @@
     <!-- Footer -->
     <footer class="bg-dark text-white py-4 mt-5">
         <div class="container text-center">
-            <p>&copy; 2026 sohel. All rights reserved.</p>
-            <p class="mb-0">Professional Fine Dining Waiter</p>
+            <p class="editable" data-id="copyright">&copy; 2026 sohel. All rights reserved.</p>
+            <p class="mb-0 editable" data-id="bottom-title">Professional Fine Dining Waiter</p>
         </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="sohel.js"></script>
+     <script src="login.js" defer></script>
+    <script src="sohel.js" defer></script>
+   
 </body>
 
 </html>
