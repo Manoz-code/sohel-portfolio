@@ -16,7 +16,7 @@ const connectDB = async()=>{
 
 // handle disconnects
 mongoose.connection.on("disconnected",()=>{
-  console.warm("MongoDB disconnected")
+  console.warn("MongoDB disconnected")
 })
 
 // Optional: handle connection errors after initial connect
