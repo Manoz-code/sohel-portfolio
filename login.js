@@ -167,5 +167,20 @@ logoutBtn?.addEventListener("click",()=>{
     
     //reset
     editable.forEach(el => el.contentEditable = false);
-    window.location.href = "login.html"
+      // Hide admin controls
+    if (editMode) editMode.style.display = "none";
+    if (saveBtn) saveBtn.style.display = "none";
+    
+    // Show login button, hide logout button
+    if (loginBtn) {
+        loginBtn.style.display = "block";
+        loginBtn.disabled = false;
+    }
+    if (logoutBtn) logoutBtn.style.display = "none";
+    
+    // Optional: Show logout success message
+    alert("Logged out successfully!");
+    
+    // Redirect to login page
+    window.location.href = "index.html";
 })
