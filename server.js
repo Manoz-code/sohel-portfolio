@@ -7,7 +7,7 @@ import router from "./routes/adminRouter.js"
 
 // connect to database
 connectDB();
-createAdmin();
+await createAdmin();
 const app = express();
 const PORT = process.env.PORT || 8000;
 app.use(express.json())
