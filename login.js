@@ -19,7 +19,7 @@ e.preventDefault();
 
 //authentication 
 const form = document.querySelector("#login-form");
-const LOGIN_URL = "http://localhost:8000/auth/api/login"
+const LOGIN_URL = "https://sohel-portfolio.onrender.com/login"
 
 form?.addEventListener("submit",async(e)=>{
     e.preventDefault();
@@ -49,26 +49,46 @@ form?.addEventListener("submit",async(e)=>{
 })
 
 
-document.addEventListener("DOMContentLoaded",()=>{
-    loadContent();
+document.addEventListener("DOMContentLoaded",async()=>{
+    await loadContent();
     const token  = localStorage.getItem("token");
     if(token) {
+        const isValid = await verifyToken(token);
+
+        if(isValid){
          loginBtn.disabled = true;
          loginBtn.style.display = "none";
          logoutBtn.style.display = "block";
         enableAdminMode();
+        }else{
+localStorage.removeItem("token");
+            loginBtn.style.display = "block";
+            logoutBtn.style.display = "none";
+        }
     }else{
-        loginBtn.disabled = false;
-        loginBtn.display = "block";
+      
+        loginBtn.style.display = "block";
         logoutBtn.style.display = "none"
     }
 
 })
 
+async function verifyToken(token) {
+    try {
+        const response = await fetch("https://sohel-portfolio.onrender.com/verify", {
+            headers: {
+                "Authorization": "Bearer " + token
+            }
+        });
+        return response.ok;
+    } catch (error) {
+        return false;
+    }
+}
 // load Content
 
 const loadContent =async()=>{
-    const response = await fetch("http://localhost:8000/auth/api/getContent");
+    const response = await fetch("https://sohel-portfolio.onrender.com/getContent");
     const data = await response.json();
 
     data.forEach(item =>{
@@ -86,7 +106,7 @@ const loadContent =async()=>{
 const editMode = document.querySelector("#editMode");
 const saveBtn = document.querySelector("#save")
 const editable = document.querySelectorAll(".editable");
-const UPDATE_URL = "http://localhost:8000/auth/api/updateContent"
+const UPDATE_URL = "https://sohel-portfolio.onrender.com/updateContent"
 
 // editable function
 
@@ -147,5 +167,20 @@ logoutBtn?.addEventListener("click",()=>{
     
     //reset
     editable.forEach(el => el.contentEditable = false);
-    window.location.href = "login.html"
+      // Hide admin controls
+    if (editMode) editMode.style.display = "none";
+    if (saveBtn) saveBtn.style.display = "none";
+    
+    // Show login button, hide logout button
+    if (loginBtn) {
+        loginBtn.style.display = "block";
+        loginBtn.disabled = false;
+    }
+    if (logoutBtn) logoutBtn.style.display = "none";
+    
+    // Optional: Show logout success message
+    alert("Logged out successfully!");
+    
+    // Redirect to login page
+    window.location.href = "index.html";
 })
