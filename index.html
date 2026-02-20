@@ -19,8 +19,6 @@
         <div class="container">
             <a class="navbar-brand editable" data-id="nav-title" href="#">Fine Dining Professional</a>
 
-            <button id="editMode" style="display : none; width :20%;border-radius:4px;">Edit</button> 
-            <button id="save" style="display : none; width :20%;border-radius:4px;">Save</button> 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -30,6 +28,7 @@
                         <a class="nav-link" href="#home">Home</a>
                     </li>
                     <li class="nav-item">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse
                         <a class="nav-link" href="#experience">Experience</a>
                     </li>
                     <li class="nav-item">
@@ -55,6 +54,11 @@
     <!-- Main Content -->
     <main class="container py-5 mt-5">
         <!-- Home/Profile Section -->
+         <div class="btns" style="display: flex; position : fixed; gap : 2px; z-index: 2;">
+         <button type="button" id="editMode" class="btn btn-primary">Edit</button>
+
+            <button type="button" id="save" class="btn btn-primary">Save</button>
+            </div>
      <section id="home" class="py-5">
      <div class="row justify-content-center align-items-center">
        <div class="col-md-8 col-lg-6">
