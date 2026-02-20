@@ -1,186 +1,167 @@
 // Login Form 
 console.log("login-form"); 
+
 // show and hide password toggle
 const password = document.querySelector("#password");
 const passwordToggler = document.querySelector("#btn");
 const loginBtn = document.querySelector("#login-btn");
-const logoutBtn = document.querySelector("#logout-btn")
+const logoutBtn = document.querySelector("#logout-btn");
 
-passwordToggler?.addEventListener("click",(e)=>{
-e.preventDefault();
-    if(password.type ==="password"){
+passwordToggler?.addEventListener("click", (e) => {
+    e.preventDefault();
+    if (password.type === "password") {
         password.type = "text";
         passwordToggler.innerText = "Hide";
-    }else{
+    } else {
         password.type = "password";
-        passwordToggler.innerText = "Show"
+        passwordToggler.innerText = "Show";
     }
-})
+});
 
-//authentication 
+// authentication 
 const form = document.querySelector("#login-form");
-const LOGIN_URL = "https://sohel-portfolio.onrender.com/login"
+const LOGIN_URL = "https://sohel-portfolio.onrender.com/auth/api/login";  // ✅ FIXED URL
 
-form?.addEventListener("submit",async(e)=>{
+form?.addEventListener("submit", async (e) => {
     e.preventDefault();
 
-    const email = document.querySelector("#email").value ;
+    const email = document.querySelector("#email").value;
     const password = document.querySelector("#password").value;
 
-    const response = await fetch(LOGIN_URL,{
-        method : "POST",
-        headers : {
-            "Content-Type" : "application/json"
-        },
-        body : JSON.stringify({email,password})
-    });
-    const data = await response.json();
-    if(response.ok){
-        alert("login sucessful");
+    try {
+        const response = await fetch(LOGIN_URL, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ email, password })
+        });
         
-        // save token
-        localStorage.setItem("token", data.token);
-        window.location.href = "index.html";
-     
-
-    }else{
-        alert(data.message);
+        const data = await response.json();
+        
+        if (response.ok) {
+            alert("login successful");
+            localStorage.setItem("token", data.token);
+            window.location.href = "index.html";
+        } else {
+            alert(data.message);
+        }
+    } catch (error) {
+        alert("Network error. Please try again.");
     }
-})
+});
 
-
-document.addEventListener("DOMContentLoaded",async()=>{
+document.addEventListener("DOMContentLoaded", async () => {
     await loadContent();
-    const token  = localStorage.getItem("token");
-    if(token) {
-        const isValid = await verifyToken(token);
-
-        if(isValid){
-         loginBtn.disabled = true;
-         loginBtn.style.display = "none";
-         logoutBtn.style.display = "block";
+    const token = localStorage.getItem("token");
+    
+    // Add null checks for all elements
+    if (token) {
+        if (loginBtn) {
+            loginBtn.style.display = "none";
+        }
+        if (logoutBtn) {
+            logoutBtn.style.display = "block";
+        }
         enableAdminMode();
-        }else{
-localStorage.removeItem("token");
+    } else {
+        if (loginBtn) {
             loginBtn.style.display = "block";
+        }
+        if (logoutBtn) {
             logoutBtn.style.display = "none";
         }
-    }else{
-      
-        loginBtn.style.display = "block";
-        logoutBtn.style.display = "none"
     }
+});
 
-})
-
-async function verifyToken(token) {
+// load Content
+const loadContent = async () => {
     try {
-        const response = await fetch("https://sohel-portfolio.onrender.com/verify", {
-            headers: {
-                "Authorization": "Bearer " + token
+        const response = await fetch("https://sohel-portfolio.onrender.com/auth/api/getContent");  // ✅ FIXED URL
+        const data = await response.json();
+
+        data.forEach(item => {
+            const el = document.querySelector(`[data-id="${item.key}"]`);
+            if (el) {
+                el.innerHTML = item.value;
             }
         });
-        return response.ok;
     } catch (error) {
-        return false;
+        console.error("Error loading content:", error);
     }
-}
-// load Content
+};
 
-const loadContent =async()=>{
-    const response = await fetch("https://sohel-portfolio.onrender.com/getContent");
-    const data = await response.json();
-
-    data.forEach(item =>{
-        const el =document.querySelector(`[data-id = "${item.key}"]`);
-        if(el){
-            el.innerHTML = item.value;
-        }
-    })
-}
-
-
-
-// adim features
-
+// admin features
 const editMode = document.querySelector("#editMode");
-const saveBtn = document.querySelector("#save")
+const saveBtn = document.querySelector("#save");
 const editable = document.querySelectorAll(".editable");
-const UPDATE_URL = "https://sohel-portfolio.onrender.com/updateContent"
+const UPDATE_URL = "https://sohel-portfolio.onrender.com/auth/api/updateContent";
 
 // editable function
-
-function enableAdminMode(){
+function enableAdminMode() {
+    if (!editMode || !saveBtn) return;
     
+    editMode.style.display = "inline-block";
+    saveBtn.style.display = "inline-block";
     
-   editMode.style.display = "inline-block";
-   saveBtn.style.display = "inline-block"
-   editMode?.addEventListener("click",()=>{
-    editable.forEach(content=>{
-
-         content.contentEditable = true;
-         if(content.dataset.id === "admin-name"){
-   content.focus();
-         }
+    editMode?.addEventListener("click", () => {
+        editable.forEach(content => {
+            content.contentEditable = true;
+            if (content.dataset.id === "admin-name") {
+                content.focus();
+            }
+        });
+        saveBtn.addEventListener("click", savePageContent);
     });
-    saveBtn.addEventListener("click",savePageContent)
-   
-   })
-
 }
 
 // save function frontend
+async function savePageContent() {
+    const contentData = {};
 
-async function savePageContent(){
- const contentData = {
+    editable.forEach(el => {
+        const key = el.dataset.id;
+        const value = el.innerHTML;
+        contentData[key] = value;
+    });
 
- };
+    const token = localStorage.getItem("token");
+    
+    try {
+        const response = await fetch(UPDATE_URL, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer " + token
+            },
+            body: JSON.stringify(contentData)
+        });
 
-
-editable.forEach(el =>{
-    const key = el.dataset.id;
-    const value = el.innerHTML;
-    contentData[key] = value;
-})
-
-const token = localStorage.getItem("token");
-const response = await fetch(UPDATE_URL,{
-
-     method: "PUT",
-    headers: {
-        "Content-Type": "application/json",
-        "Authorization": "Bearer " + token
-    },
-    body: JSON.stringify(contentData)
-})
-
-   if (response.ok) {
-        alert("Saved successfully!");
-    } else {
-        alert("Error saving content");
+        if (response.ok) {
+            alert("Saved successfully!");
+        } else {
+            alert("Error saving content");
+        }
+    } catch (error) {
+        alert("Network error. Please try again.");
     }
+}
 
-};
-
-logoutBtn?.addEventListener("click",()=>{
+logoutBtn?.addEventListener("click", () => {
     localStorage.removeItem("token");
     
-    //reset
     editable.forEach(el => el.contentEditable = false);
-      // Hide admin controls
+    
     if (editMode) editMode.style.display = "none";
     if (saveBtn) saveBtn.style.display = "none";
     
-    // Show login button, hide logout button
     if (loginBtn) {
         loginBtn.style.display = "block";
-        loginBtn.disabled = false;
     }
-    if (logoutBtn) logoutBtn.style.display = "none";
+    if (logoutBtn) {
+        logoutBtn.style.display = "none";
+    }
     
-    // Optional: Show logout success message
     alert("Logged out successfully!");
-    
-    // Redirect to login page
     window.location.href = "index.html";
-})
+});
