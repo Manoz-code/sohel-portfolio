@@ -20,7 +20,7 @@ passwordToggler?.addEventListener("click", (e) => {
 
 // authentication 
 const form = document.querySelector("#login-form");
-const LOGIN_URL = "https://sohel-portfolio.onrender.com/login";  // ✅ FIXED URL
+const LOGIN_URL = "https://sohel-portfolio.onrender.com/auth/api/login";  // ✅ FIXED URL
 
 form?.addEventListener("submit", async (e) => {
     e.preventDefault();
@@ -77,7 +77,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 // load Content
 const loadContent = async () => {
     try {
-        const response = await fetch("https://sohel-portfolio.onrender.com/getContent");  // ✅ FIXED URL
+        const response = await fetch("https://sohel-portfolio.onrender.com/auth/api/getContent");  // ✅ FIXED URL
         const data = await response.json();
 
         data.forEach(item => {
@@ -95,7 +95,7 @@ const loadContent = async () => {
 const editMode = document.querySelector("#editMode");
 const saveBtn = document.querySelector("#save");
 const editable = document.querySelectorAll(".editable");
-const UPDATE_URL = "https://sohel-portfolio.onrender.com/updateContent";
+const UPDATE_URL = "https://sohel-portfolio.onrender.com/auth/api/updateContent";
 
 // editable function
 function enableAdminMode() {
